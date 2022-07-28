@@ -5,7 +5,7 @@ const Auth = require('../passportAuthentication/auth');
 const bcrypt = require('bcrypt');
 
 router.get('/', Auth.isNotAuthenticated, async (req, res)=>{
-    res.render('../view//register.ejs');
+    res.render('../view/register.ejs');
 });
 
 router.post('/', async (req, res)=>{

@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const registerRout = require('./routes/register');
 const loginRout = require('./routes/login');
 const homeRout = require('./routes/home');
+const clientRout = require('./routes/client');
+const showClientRout = require('./routes/showClient');
 const passport = require('./passportAuthentication/passport');
 const session = require('./session/session');
 
@@ -25,5 +27,7 @@ app.use(passport);
 app.use('/register', registerRout);
 app.use('/login', loginRout);
 app.use('/', homeRout);
+app.use('/client', clientRout);
+app.use('/showClients', showClientRout);
 
 app.listen(process.env.PORT);

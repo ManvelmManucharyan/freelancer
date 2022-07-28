@@ -1,0 +1,17 @@
+<h2>Clients</h2>
+<form action="/showClients">
+    <% clients.forEach((client)=> { %> 
+        <div>
+            <div>Name - <%=client.name%></div>
+            <div>Surname - <%=client.surname%></div>
+            <div>Email - <%=client.email%> </div>
+            <div>Service Type - <%=client.serviceType%></div>
+            <div>Payment Date - <%=client.paymentDate.toISOString().split('T')[0].split('-').reverse().join('/')%></div>
+        </div>
+        <br>
+        <br>
+    <% }) %> 
+    <div>
+        <a href="/">Home Page</a>
+    </div>
+</form>
