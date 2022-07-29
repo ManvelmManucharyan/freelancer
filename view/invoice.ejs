@@ -1,0 +1,29 @@
+<h2>Invoice information</h2>
+<form action="/invoice" method="post">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" value="<%=client.name %> ">
+    </div>
+    <div>
+        <label>Surname</label>
+        <input type="text" name="surname" value="<%=client.surname %> ">
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" value="<%=client.email %> ">
+    </div>
+    <div>
+        <label>Service Type</label>
+        <input type="text" name="serviceType" value="<%=client.serviceType %> ">
+    </div>
+    <div>
+        <label>Payment Date</label>
+        <input type="date" name="paymentDate" value="<%=client.paymentDate.toISOString().split('T')[0]%>">
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="number" name="price">
+    </div>
+    <button type="submit">Create Invoice</button>
+    <a href="/showClients">Client List</a>
+</form>

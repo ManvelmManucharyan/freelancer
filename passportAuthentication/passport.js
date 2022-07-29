@@ -14,20 +14,21 @@ passport.use(new passportLocal.Strategy({
     passwordField: 'password'
 }, async (email, password, done)=>{
     const user = await User.findOne({email});
-    const token =  jwt.sign({
-        id: user.id,
-        name: user.name,
-    },
-    process.env.JWT_SECRET
-    );
-
     try {
         if(user === undefined) {
             return done(null, null, {message: 'Incorrect login or password'});
         }else if(user !== null && await bcrypt.compare(password, user.password)) {
+            const token = jwt.sign(
+                { user_id: user.id, email },
+                process.env.JWT_SECRET,
+                {
+                  expiresIn: "2h",
+                }
+              );
+            user.token = token;
+            await user.save();
             return done(null, user, {token});
         }
-    
         done(null, null, {message: "Incorrect login or password"});
     } catch (error) {
         console.log(error);

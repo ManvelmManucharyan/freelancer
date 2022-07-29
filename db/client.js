@@ -20,7 +20,16 @@ const clientsSchema = new mongoose.Schema({
     paymentDate: {
         type: Date,
         requried:  true
-    }
+    },
+    task: {
+        type: String,
+        default: ' '
+    },
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     required: true,
+    //     ref: 'Users'
+    // }
 });
 
 module.exports = mongoose.model('Clients', clientsSchema);

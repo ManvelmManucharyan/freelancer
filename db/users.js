@@ -20,6 +20,10 @@ const usersSchema = new mongoose.Schema({
     paymentType: {
         type: String,
         requried:  true
+    },
+    token: {
+        type: String,
+        default: ' '
     }
 });
 

@@ -1,5 +1,5 @@
 <h2>Clients</h2>
-<form action="/showClients">
+<form action="/showClients" method="post">
     <% clients.forEach((client)=> { %> 
         <div>
             <div>Name - <%=client.name%></div>
@@ -7,6 +7,9 @@
             <div>Email - <%=client.email%> </div>
             <div>Service Type - <%=client.serviceType%></div>
             <div>Payment Date - <%=client.paymentDate.toISOString().split('T')[0].split('-').reverse().join('/')%></div>
+        </div>
+        <button type="submit" name='task' value="<%= client._id%>">Create Task</button>        
+        <button type="submit" name='finish' value="<%= client._id%>">Finish</button>
         </div>
         <br>
         <br>

@@ -8,6 +8,10 @@ const clientRout = require('./routes/client');
 const showClientRout = require('./routes/showClient');
 const passport = require('./passportAuthentication/passport');
 const session = require('./session/session');
+const invoiceRout = require('./routes/invoice');
+const deleteRout = require('./routes/deleteClient');
+
+
 
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
@@ -19,7 +23,6 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-
 app.use(session);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -29,5 +32,8 @@ app.use('/login', loginRout);
 app.use('/', homeRout);
 app.use('/client', clientRout);
 app.use('/showClients', showClientRout);
+app.use('/invoice', invoiceRout);
+app.use('/deleteClient', deleteRout);
+
 
 app.listen(process.env.PORT);
