@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const easyinvoice = require('easyinvoice');
 const Client = require('../db/client');
 
 router.get('/', (req, res)=>{

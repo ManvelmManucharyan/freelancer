@@ -10,7 +10,7 @@ const passport = require('./passportAuthentication/passport');
 const session = require('./session/session');
 const invoiceRout = require('./routes/invoice');
 const deleteRout = require('./routes/deleteClient');
-
+const Mail = require('./routes/mail');
 
 
 
@@ -19,6 +19,7 @@ const db = mongoose.connection;
 db.on('error', error => console.error(error));
 db.once('open', ()=> console.log("Connected to databse"));
 
+Mail.reminder();
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -34,6 +35,5 @@ app.use('/client', clientRout);
 app.use('/showClients', showClientRout);
 app.use('/invoice', invoiceRout);
 app.use('/deleteClient', deleteRout);
-
 
 app.listen(process.env.PORT);

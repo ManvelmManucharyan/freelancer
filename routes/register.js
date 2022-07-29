@@ -3,7 +3,6 @@ const User = require('../db/users');
 const router = express.Router();
 const Auth = require('../passportAuthentication/auth');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 router.get('/', Auth.isNotAuthenticated, async (req, res)=>{
     res.render('../view/register.ejs');
