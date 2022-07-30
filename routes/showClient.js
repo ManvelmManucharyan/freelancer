@@ -11,12 +11,9 @@ router.get('/', Auth.isAuthenticated, async (req, res)=>{
 router.post('/', Auth.isAuthenticated, async (req, res)=>{
     if(req.body.task){
         const client = await Client.findById(req.body.task);
-        client.task = 'Ongoing';
-        await client.save();
-        res.redirect('/invoice');
+        res.render('../view/invoice.ejs', {client});
     }else if(req.body.finish){
         const client = await Client.findById(req.body.finish);
-        client.task = 'finish';
         await client.remove();
         res.redirect('/deleteClient');
     }

@@ -11,6 +11,7 @@ const session = require('./session/session');
 const invoiceRout = require('./routes/invoice');
 const deleteRout = require('./routes/deleteClient');
 const Mail = require('./routes/mail');
+const Client = require('./db/client');
 
 
 
@@ -19,7 +20,19 @@ const db = mongoose.connection;
 db.on('error', error => console.error(error));
 db.once('open', ()=> console.log("Connected to databse"));
 
-Mail.reminder();
+
+setInterval(async ()=>{
+    const clients = await Client.find({});
+    clients.forEach(async (client) => {
+        if(Math.ceil(Math.abs(client.paymentDate - new Date())/(1000*60*60*24)) <= 5 && client.paymentDate > new Date()){
+            Mail.reminder(client);
+        } else if (client.paymentDate <= new Date()){
+            Mail.overdue(client,`invoices/${client.name}_invoice_${client._id}.pdf`);
+        }
+    });
+}, (1000*60*60*24));
+
+
 const app = express();
 
 app.set('view engine', 'ejs');

@@ -21,10 +21,6 @@ const clientsSchema = new mongoose.Schema({
         type: Date,
         requried:  true
     },
-    task: {
-        type: String,
-        default: ' '
-    },
     // user: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     required: true,

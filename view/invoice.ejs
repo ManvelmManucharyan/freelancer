@@ -2,28 +2,28 @@
 <form action="/invoice" method="post">
     <div>
         <label>Name</label>
-        <input type="text" name="name" value="<%=client.name %> ">
+        <input type="text" name="name" value="<%=client.name %> "  required>
     </div>
     <div>
         <label>Surname</label>
-        <input type="text" name="surname" value="<%=client.surname %> ">
+        <input type="text" name="surname" value="<%=client.surname %> "  required>
     </div>
     <div>
         <label>Email</label>
-        <input type="email" name="email" value="<%=client.email %> ">
+        <input type="email" name="email" value="<%=client.email %> "  required>
     </div>
     <div>
         <label>Service Type</label>
-        <input type="text" name="serviceType" value="<%=client.serviceType %> ">
+        <input type="text" name="serviceType" value="<%=client.serviceType %> "  required>
     </div>
     <div>
         <label>Payment Date</label>
-        <input type="date" name="paymentDate" value="<%=client.paymentDate.toISOString().split('T')[0]%>">
+        <input type="date" name="paymentDate" value="<%=client.paymentDate.toISOString().split('T')[0]%>"  required>
     </div>
     <div>
         <label>Price</label>
-        <input type="number" name="price">
+        <input type="number" name="price"  required>
     </div>
-    <button type="submit">Create Invoice</button>
+    <button type="submit" name="createTask" value="<%= client._id%>">Create Invoice</button>
     <a href="/showClients">Client List</a>
 </form>

@@ -6,14 +6,13 @@ const Invoice = require('../routes/createInvoice');
 const Mail = require('../routes/mail');
 
 router.get('/', async (req, res)=>{
-    const client = await Client.findOne({task: 'Ongoing'});
-    res.render('../view/invoice.ejs', {client});
+    res.render('../view/invoice.ejs');
 });
 
 router.post('/', async (req, res)=>{
-    const client = await Client.findOne({task: 'Ongoing'});
+    const client = await Client.findById(req.body.createTask);
     await Invoice.invoce(client, req.body.price);
-    await Mail.main(client, `invoices/${client.name}_invoice_${client._id}.pdf`);
+    Mail.main(client, `invoices/${client.name}_invoice_${client._id}.pdf`);
     res.redirect('/showClients');
 });
 
