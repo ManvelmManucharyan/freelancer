@@ -1,6 +1,7 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const path = require('path');
+
 class Mail{
     static async main(client, filePath) {
         let transporter = nodemailer.createTransport({

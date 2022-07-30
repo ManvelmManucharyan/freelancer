@@ -43,5 +43,4 @@ passport.deserializeUser((id, done)=>{
     done(null, User.findOne({id}));
 });
 
-
 module.exports = router;

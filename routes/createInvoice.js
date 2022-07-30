@@ -13,7 +13,6 @@ class CreateInvoice {
                 "zip": "0062",
                 "city": "Yerevan",
                 "country": "Armenia"
-
             },
             "client": {
                 "company": `Name Surname: ${client.name} ${client.surname}`,
@@ -35,7 +34,6 @@ class CreateInvoice {
                     "price": price
                 }
             ],
-
             "bottom-notice": "Kindly pay your invoice within 15 days.",
             "settings": {
                 "currency": "USD"

@@ -14,8 +14,8 @@ router.get('/', Auth.isAuthenticated, async (req, res)=>{
     }
 });
 
-router.get('/logout', async function (req, res, next) {
-    req.logOut(async function(err){
+router.get('/logout', async (req, res, next)=> {
+    req.logOut(async (err)=> {
         if(err) return next(err);
         res.redirect('/login');
     });

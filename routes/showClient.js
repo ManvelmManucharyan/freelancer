@@ -17,7 +17,6 @@ router.post('/', Auth.isAuthenticated, async (req, res)=>{
         await client.remove();
         res.redirect('/deleteClient');
     }
-
 });
 
 
