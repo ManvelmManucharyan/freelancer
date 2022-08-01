@@ -21,11 +21,11 @@ const clientsSchema = new mongoose.Schema({
         type: Date,
         requried:  true
     },
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     required: true,
-    //     ref: 'Users'
-    // }
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Users'
+    }
 });
 
 module.exports = mongoose.model('Clients', clientsSchema);

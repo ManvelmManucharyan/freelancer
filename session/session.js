@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('Express');
 const router = express.Router();
 const session = require('express-session');

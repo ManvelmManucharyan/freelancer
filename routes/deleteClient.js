@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Client = require('../db/client');
+const Client = require('../model/client');
 
 router.get('/', (req, res)=>{
     res.render('../view/deleteClient.ejs');

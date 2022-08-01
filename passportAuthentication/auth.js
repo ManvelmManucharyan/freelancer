@@ -5,7 +5,6 @@ class Auth {
         }
         next();
     }
-
     static isAuthenticated (req, res, next){
         if(req.isAuthenticated() === false){
             return res.redirect('/login');

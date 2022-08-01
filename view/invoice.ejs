@@ -1,29 +1,30 @@
 <h2>Invoice information</h2>
 <form action="/invoice" method="post">
+    <%- include('../view/confirm/confirm.ejs') %> 
     <div>
         <label>Name</label>
-        <input type="text" name="name" value="<%=client.name %> "  required>
+        <input type="text" name="name" value="<%=clients.name %> "  required>
     </div>
     <div>
         <label>Surname</label>
-        <input type="text" name="surname" value="<%=client.surname %> "  required>
+        <input type="text" name="surname" value="<%=clients.surname %> "  required>
     </div>
     <div>
         <label>Email</label>
-        <input type="email" name="email" value="<%=client.email %> "  required>
+        <input type="email" name="email" value="<%=clients.email %> "  required>
     </div>
     <div>
         <label>Service Type</label>
-        <input type="text" name="serviceType" value="<%=client.serviceType %> "  required>
+        <input type="text" name="serviceType" value="<%=clients.serviceType %> "  required>
     </div>
     <div>
         <label>Payment Date</label>
-        <input type="date" name="paymentDate" value="<%=client.paymentDate.toISOString().split('T')[0]%>"  required>
+        <input type="date" name="paymentDate" value="<%=clients.paymentDate.toISOString().split('T')[0]%>"  required>
     </div>
     <div>
         <label>Price</label>
         <input type="number" name="price"  required>
     </div>
-    <button type="submit" name="createTask" value="<%= client._id%>">Create Invoice</button>
+    <button type="submit" name="createTask" value="<%= clients._id%>">Send Invoice</button>
     <a href="/showClients">Client List</a>
 </form>

@@ -11,9 +11,9 @@ router.get('/', Auth.isNotAuthenticated, (req, res)=>{
     }
 });
 
-router.post('/', passport.authenticate("local", {
-    successRedirect: '/', 
-    failureRedirect: '/login'
+router.post('/',passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: 'login'
 }));
 
 module.exports = router;

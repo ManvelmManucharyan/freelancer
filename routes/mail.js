@@ -1,11 +1,10 @@
-require('dotenv').config();
 const nodemailer = require('nodemailer');
 const path = require('path');
 
 class Mail{
-    static async main(client, filePath) {
+    static async main(client, user, filePath) {
         let transporter = nodemailer.createTransport({
-            host: "smtp.list.ru",
+            host: 'smtp.list.ru',
             post: 587,
             secure: false,
             auth: {
@@ -15,10 +14,10 @@ class Mail{
         });
     
         let info = await transporter.sendMail({
-            from: '"Manvel Manucharyan" <testnodemailer@list.ru>',
+            from: `${user.name} ${user.surname} <testnodemailer@list.ru>`,
             to: `${client.email}`,
-            subject: "Invoice",
-            text: `Payment invoice, Dear ${client.name} ${client.surname}, make payment in time.`,
+            subject: 'Invoice',
+            text: `Payment invoice, Dear ${client.name} ${client.surname}, make payment in time by.`,
             attachments: [{
                 filename: 'file.pdf',
                 path: path.join(path.resolve(),`${filePath}` ),
@@ -26,9 +25,9 @@ class Mail{
                 }],
         });
         }
-    static async reminder (client){
+    static async reminder (client, user){
             let transporter = nodemailer.createTransport({
-                host: "smtp.list.ru",
+                host: 'smtp.list.ru',
                 post: 587,
                 secure: false,
                 auth: {
@@ -38,15 +37,15 @@ class Mail{
             });
         
             let info = await transporter.sendMail({
-                from: '"Manvel Manucharyan" <testnodemailer@list.ru>',
+                from: `${user.name} ${user.surname}  <testnodemailer@list.ru>`,
                 to: `${client.email}`,
-                subject: "Invoice Reminder",
+                subject: 'Invoice Reminder',
                 text: `Dear ${client.name} ${client.surname}, we want to remind you that you have payment in ${client.paymentDate.toISOString().split('T')[0].split('-').reverse().join('/')}`
             });           
     }
-    static async overdue(client, filePath) {
+    static async overdue(client, user, filePath) {
         let transporter = nodemailer.createTransport({
-            host: "smtp.list.ru",
+            host: 'smtp.list.ru',
             post: 587,
             secure: false,
             auth: {
@@ -56,9 +55,9 @@ class Mail{
         });
     
         let info = await transporter.sendMail({
-            from: '"Manvel Manucharyan" <testnodemailer@list.ru>',
+            from: `${user.name} ${user.surname}  <testnodemailer@list.ru>`,
             to: `${client.email}`,
-            subject: "Payment Invoice",
+            subject: 'Payment Invoice',
             text: `Dear ${client.name} ${client.surname}, you did not make your payment, please make it.`,
             attachments: [{
                 filename: 'file.pdf',
