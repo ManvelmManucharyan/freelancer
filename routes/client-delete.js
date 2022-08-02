@@ -5,7 +5,7 @@ const Auth = require('../passportAuthentication/auth');
 
 router.get('/:id',Auth.isAuthenticated, async (req, res)=>{
     const client = await Client.findById(req.params.id);
-    res.render('../view/deleteClient.ejs', {client});
+    res.render('../view/client-delete.ejs', {client});
 });
 
 router.delete('/:id', async (req, res)=>{

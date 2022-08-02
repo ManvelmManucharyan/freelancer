@@ -7,7 +7,7 @@ const User= require('../model/users');
 router.get('/', Auth.isAuthenticated, async (req, res)=>{
     const user = await User.findById(req.session.passport.user);
     const clients = await Client.find({user});
-    res.render('../view/showClient.ejs', {clients});
+    res.render('../view/all-clients.ejs', {clients});
 });
 
 router.post('/', Auth.isAuthenticated, async (req, res)=>{

@@ -2,7 +2,7 @@ const easyinvoice = require('easyinvoice');
 const fs = require('fs');
 const path = require('path');
 
-class CreateInvoice {
+class InvoiceCreation {
     static async invoce(client, price, user){
         const data = {
             'customize': {
@@ -45,4 +45,4 @@ class CreateInvoice {
     }
 }
 
-module.exports = CreateInvoice;
+module.exports = InvoiceCreation;

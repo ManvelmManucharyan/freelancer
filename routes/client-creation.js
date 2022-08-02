@@ -5,7 +5,7 @@ const Auth = require('../passportAuthentication/auth');
 const User= require('../model/users');
 
 router.get('/', Auth.isAuthenticated,(req, res)=>{
-    res.render('../view/clientInfo.ejs');
+    res.render('../view/client-info.ejs');
 });
 
 router.post('/', async (req, res)=>{
