@@ -3,7 +3,7 @@
 
 2. Program is running on http://localhost:3000/, also I add a littlebit frontend, to make review easy
 
-3. Program do his functionality well, but must improve login system, to be recognizing user by jwt token
+3. Program do his functionality well, but must improve login system
 
 4. All files formatted in folders and showing containing program
 http://localhost:3000/register - for registration
