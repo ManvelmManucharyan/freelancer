@@ -4,11 +4,7 @@ const Auth = require('../passportAuthentication/auth');
 const passport = require('passport');
 
 router.get('/', Auth.isNotAuthenticated, (req, res)=>{
-    try {
-        res.render('../view/login.ejs');
-    } catch (error) {
-        console.error(error);
-    }
+    res.render('../view/login.ejs');
 });
 
 router.post('/',passport.authenticate('local', {

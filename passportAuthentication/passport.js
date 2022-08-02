@@ -12,11 +12,11 @@ passport.use(new passportLocal.Strategy({
     usernameField: 'email',
     passwordField: 'password'
 }, async (email, password, done)=>{
-    const user = await User.findOne({email});
+    const user = await User.findOne( {email} );
     try {
-        if(user === undefined) {
+        if (user === undefined) {
             return done(null, false, {message: 'Incorrect login or password'});
-        }else if(user !== null && await bcrypt.compare(password, user.password)) {
+        }else if (user !== null && await bcrypt.compare(password, user.password)) {
             Token.createToken(user);
             return done(null, user);
         }

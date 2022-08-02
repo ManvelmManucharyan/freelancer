@@ -10,9 +10,9 @@ router.get('/', Auth.isNotAuthenticated, async (req, res)=>{
 
 router.post('/', async (req, res)=>{
     const {name, surname, email, password, paymentType} = req.body;
-    if(await User.findOne({email})){
+    if (await User.findOne({email})) {
         res.render('../view/register.ejs', {errorMessage: 'This Email Already Exist'});
-    }else {
+    } else {
         const hashPassword = await bcrypt.hash(password, 10);
         const user = new User({
             name,

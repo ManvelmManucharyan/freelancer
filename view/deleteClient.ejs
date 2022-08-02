@@ -1,5 +1,6 @@
-<form action="/deleteClient">
+<form action="/deleteClient/<%=client._id %>?_method=DELETE" method="POST">
     <h2>Task Finished</h2>
-    <h2>Client Deleted</h2>
-    <a href="/">Home Page</a>
+    <h2>Do you want delete <%=client.name %> <%=client.surname %>'s task ?</h2>
+    <button type="submit">Yes</button>
+    <a href="/showClients">No</a>
 </form>

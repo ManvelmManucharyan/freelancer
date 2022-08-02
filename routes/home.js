@@ -8,7 +8,7 @@ router.get('/',Auth.isAuthenticated, async (req, res)=>{
     try {        
         const user = await User.findById(req.session.passport.user);
         jwt.verify(user.token, process.env.JWT_SECRET, (err)=>{
-            if(err){
+            if (err) {
                 res.render('../view/login.ejs');
             }else {
                 res.render('../view/index.ejs', {user});
@@ -21,7 +21,7 @@ router.get('/',Auth.isAuthenticated, async (req, res)=>{
 
 router.get('/logout', async (req, res, next)=> {
     req.logOut(async (err)=> {
-        if(err) return next(err);
+        if (err) return next(err);
         res.redirect('/login');
     });
 }); 
