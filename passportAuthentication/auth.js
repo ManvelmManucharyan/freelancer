@@ -3,13 +3,11 @@ class Auth {
         if (req.isAuthenticated() === true) {
             return res.redirect('/');
         }
-        next();
     }
     static isAuthenticated (req, res, next) {
         if (req.isAuthenticated() === false) {
             return res.redirect('/login');
         }
-        next();
     }
 }
 
